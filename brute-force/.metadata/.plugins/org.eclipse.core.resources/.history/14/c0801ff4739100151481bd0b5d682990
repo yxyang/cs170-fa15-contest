@@ -1,0 +1,46 @@
+import java.util.Scanner;
+
+public class search {
+	public int[] run(int n, int[][] a, int num_iter) {
+		int[] ord = new int[n];
+		for (int i = 0; i < n; i++) {
+			ord[i] = i;
+		}
+		
+		int[] best_ord = null;
+		int max = 0;
+		for (int i = 0; i < num_iter; i++) {
+			int sum = 0;
+			for (int x = 0; x < n; x++) {
+				for (int y = x+1; y < n; y++) {
+					sum += a[ord[x]][ord[y]];
+				}
+			}
+			if (sum > max) {
+				max = sum;
+				best_ord = ord;
+			}
+			ord = shuffle(ord);
+		}
+		return best_ord;
+	}
+	
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		int num_data = input.nextInt();
+		int num_iter = 500;
+		
+		for (int i = 0; i < num_data; i++) {
+			int num_ver = input.nextInt();
+			int[][] a = new int[num_ver][num_ver];
+			for (int x = 0; x < num_ver; x++) {
+				for (int y = 0; y < num_ver; y++) {
+					a[x][y] = input.nextInt();
+				}
+			}
+			
+			System.out.println(run(num_ver, a, num_iter));
+		}
+		input.close();
+	}
+}
