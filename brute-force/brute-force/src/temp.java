@@ -6,11 +6,11 @@ public class temp {
 		int n = 100;
 		int[][] g = new int[n][n];
 		int[] ord = new int[n];
-		System.out.println(1);
+		//System.out.println(1);
 		System.out.println(n);
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++) {
-				if (rnd.nextBoolean()) {
+				if ((i != j) && (rnd.nextBoolean())) {
 					g[i][j] = 1;
 				} else {
 					g[i][j] = 0;
