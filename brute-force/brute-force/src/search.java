@@ -6,14 +6,25 @@ public class search {
 	public static int[] shuffle(int[] a, int n, int[][] g) {
 		int[] ans = new int[n];		
 		Random rnd = new Random();
-		HashSet<Integer> chosen = new HashSet<Integer>();
 		int l = 0, r = n-1;
+
+		int[] ord = new int[n];
+		for (int i = 0; i < n; i++) {
+			ord[i] = i;
+		}
+    	for (int i = ord.length - 1; i > 0; i--)
+    	{
+    	  int index = rnd.nextInt(i + 1);
+    	  // Simple swap
+    	  int temp = ord[index];
+    	  ord[index] = ord[i];
+    	  ord[i] = temp;
+    	}
+
+		int pos = 0;
 		
-		while (l < r) {
-			int x = rnd.nextInt(n);
-			while (chosen.contains(x)) {
-				x = rnd.nextInt(n);
-			}
+		while (pos < ord.length) {
+			int x = ord[pos];
 			
 			int inDegree = 0, outDegree = 0;
 			for (int i = 0; i < n; i++) {
@@ -27,6 +38,7 @@ public class search {
 				ans[r] = x;
 				r -= 1;
 			}
+			pos += 1;
 		}
 		return ans;
 	}
@@ -59,7 +71,7 @@ public class search {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		int num_data = input.nextInt();
-		int num_iter = 50000;
+		int num_iter = 200000;
 		
 		for (int i = 0; i < num_data; i++) {
 			int num_ver = input.nextInt();
