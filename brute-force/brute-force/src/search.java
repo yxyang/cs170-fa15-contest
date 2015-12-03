@@ -64,7 +64,7 @@ public class search {
 				best_ord = ord;
 			}
 		}
-		System.out.println("Max value is: " + max);
+		//System.out.println("Max value is: " + max);
 		return best_ord;
 	}
 	
