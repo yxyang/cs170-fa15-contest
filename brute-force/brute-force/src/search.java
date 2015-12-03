@@ -71,7 +71,7 @@ public class search {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		int num_data = input.nextInt();
-		int num_iter = 200000;
+		int num_iter = 2000000;
 		
 		for (int i = 0; i < num_data; i++) {
 			int num_ver = input.nextInt();
