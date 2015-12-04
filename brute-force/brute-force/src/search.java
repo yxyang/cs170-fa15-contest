@@ -75,7 +75,7 @@ public class search {
 		int num_data = 621;
 		int num_iter = 8000000;
 		
-		for (int i = 409; i <= num_data; i++) {
+		for (int i = 1; i <= num_data; i++) {
 			File file = new File("./instances/" + i + ".in");
 			Scanner input = new Scanner(file);
 			int num_ver = input.nextInt();
