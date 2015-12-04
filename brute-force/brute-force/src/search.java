@@ -52,7 +52,7 @@ public class search {
 		}
 		
 		int[] best_ord = null;
-		int max = 0;
+		int max = -1;
 		for (int i = 0; i < num_iter; i++) {
 			ord = shuffle(ord, n, a);
 			int sum = 0;
@@ -75,7 +75,7 @@ public class search {
 		int num_data = 621;
 		int num_iter = 2000000;
 		
-		for (int i = 1; i <= num_data; i++) {
+		for (int i = 409; i <= num_data; i++) {
 			File file = new File("./instances/" + i + ".in");
 			Scanner input = new Scanner(file);
 			int num_ver = input.nextInt();
