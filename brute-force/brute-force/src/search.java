@@ -73,7 +73,7 @@ public class search {
 	public static void main(String[] args) throws FileNotFoundException {
 		//Scanner input = new Scanner(System.in);
 		int num_data = 621;
-		int num_iter = 2000000;
+		int num_iter = 8000000;
 		
 		for (int i = 409; i <= num_data; i++) {
 			File file = new File("./instances/" + i + ".in");
