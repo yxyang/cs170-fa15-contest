@@ -7,6 +7,10 @@ public class SA {
 	static int tot_edges;
 	
 	public static int calc_sum(int[] perm, int[][] g, int n) {
+		/*for (int i = 0; i < n; i++) {
+			System.out.print(perm[i] + " ");
+		}
+		System.out.println();*/
 		int sum = 0;
 		for (int x = 0; x < n; x++) {
 			for (int y = x+1; y < n; y++) {
@@ -16,10 +20,22 @@ public class SA {
 		return sum;
 	}
 	
+	public static int calc_delta(int[] perm, int[][] g, int n, int x, int y) {
+		/*for (int i = 0; i < n; i++) {
+			System.out.print(perm[i] + " ");
+		}
+		System.out.println();*/
+		int ans = 0;
+		for (int i = x; i <= y; i++) {
+			ans = ans + g[perm[y]][perm[i]] - g[perm[x]][perm[i]];
+		}
+		return ans;
+	}
+	
 	public static double calc_prob(double temp, int curr_sum, int new_sum) {
 		if (new_sum > curr_sum) return 1;
-
-		double x = (new_sum - curr_sum);
+		double x = (new_sum - curr_sum) * 2;
+		//temp = Math.sqrt(temp);
 		double sig = 1 / (1 + Math.exp(-x));
 		//System.out.println(x);
 		//System.out.println(sig * temp * 2);
@@ -32,14 +48,13 @@ public class SA {
 		
 		int curr_sum = calc_sum(ord, a, num_ver);
 		for (int i = num_iter; i >= 0; i--) {
-			int x = rnd.nextInt(num_ver);
-			int y = rnd.nextInt(num_ver);
+			int x = rnd.nextInt(num_ver - 1);
+			int y = x + 1;
 			while (x == y) {
 				y = rnd.nextInt(num_ver);
 			}
-			
+			int new_sum = calc_delta(ord, a, num_ver, x, y) + curr_sum;
 			int t = ord[x]; ord[x] = ord[y]; ord[y] = t;
-			int new_sum = calc_sum(ord, a, num_ver);
 			double temp = ((double) i) / ((double) num_iter);
 			//System.out.println("new: " + new_sum + " old: " + curr_sum);
 			//System.out.println("prob: " + calc_prob(temp, curr_sum, new_sum));
@@ -57,11 +72,12 @@ public class SA {
 	public static void main(String[] args) throws FileNotFoundException {
 		//Scanner input = new Scanner(System.in);
 		int num_data = 621;
-		int num_iter = 4000000;
-		File initF = new File("./satmt.out");
+		int num_iter = 250000000;
+		File initF = new File("./sate.out");
 		Scanner init = new Scanner(initF);
+		Random rnd = new  Random();
 		
-		for (int i = 409; i <= num_data; i++) {
+		for (int i = 1; i <= num_data; i++) {
 			File file = new File("./instances/" + i + ".in");
 			Scanner input = new Scanner(file);
 			int num_ver = input.nextInt();
@@ -78,11 +94,19 @@ public class SA {
 			for (int x = 0; x < num_ver; x++) {
 				ori[x] = init.nextInt() - 1;
 			}
+			
+			/*for (int x = 0; x < num_ver; x++) {
+				int ind = rnd.nextInt(num_ver);
+				int t = ori[x];
+				ori[x] = ori[ind];
+				ori[ind] = t;
+			}*/
 			int[] ans = run(num_ver, a, num_iter, ori);
 			for (int k = 0; k < num_ver; k++) {
 				System.out.print((1 + ans[k]) + " ");
 			}
 			System.out.println();
+			
 			input.close();
 			
 		}
