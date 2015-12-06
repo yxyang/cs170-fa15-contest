@@ -55,7 +55,7 @@ public class SA {
 	public static void main(String[] args) throws FileNotFoundException {
 		//Scanner input = new Scanner(System.in);
 		int num_data = 621;
-		int num_iter = 16000000;
+		int num_iter = 4000000;
 		File initF = new File("./satmt.out");
 		Scanner init = new Scanner(initF);
 		
@@ -74,7 +74,7 @@ public class SA {
 			
 			int[] ori = new int[num_ver];
 			for (int x = 0; x < num_ver; x++) {
-				ori[x] = init.nextInt();
+				ori[x] = init.nextInt() - 1;
 			}
 			int[] ans = run(num_ver, a, num_iter, ori);
 			for (int k = 0; k < num_ver; k++) {
