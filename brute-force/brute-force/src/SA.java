@@ -58,7 +58,7 @@ public class SA {
 		//Scanner input = new Scanner(System.in);
 		int num_data = 621;
 		int num_iter = 4000000;
-		File initF = new File("./satm.out");
+		File initF = new File("./satmt.out");
 		Scanner init = new Scanner(initF);
 		
 		for (int i = 409; i <= num_data; i++) {

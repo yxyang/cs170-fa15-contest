@@ -1,0 +1,4 @@
+13 8 20 37 50 65 Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 13
+	at SA.calc_sum(SA.java:15)
+	at SA.run(SA.java:35)
+	at SA.main(SA.java:83)
