@@ -39,7 +39,7 @@ public class SA {
 	
 	public static double calc_prob(double temp, int curr_sum, int new_sum) {
 		if (new_sum > curr_sum) return 1;
-		double x = (new_sum - curr_sum) * 1.75;
+		double x = (new_sum - curr_sum) * 2;
 		//temp = Math.sqrt(temp);
 		double sig = 1 / (1 + Math.exp(-x));
 		//System.out.println(x);
