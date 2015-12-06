@@ -49,7 +49,7 @@ public class SA {
 		int curr_sum = calc_sum(ord, a, num_ver);
 		for (int i = num_iter; i >= 0; i--) {
 			int x = rnd.nextInt(num_ver - 1);
-			int y = x + 1;
+			//int y = x + 1;
 			while (x == y) {
 				y = rnd.nextInt(num_ver);
 			}
@@ -72,12 +72,12 @@ public class SA {
 	public static void main(String[] args) throws FileNotFoundException {
 		//Scanner input = new Scanner(System.in);
 		int num_data = 621;
-		int num_iter = 250000000;
-		File initF = new File("./sate.out");
+		int num_iter = 2500000;
+		File initF = new File("./ffinal.out");
 		Scanner init = new Scanner(initF);
 		Random rnd = new  Random();
 		
-		for (int i = 1; i <= num_data; i++) {
+		for (int i = args[0]; i <= args[1]; i++) {
 			File file = new File("./instances/" + i + ".in");
 			Scanner input = new Scanner(file);
 			int num_ver = input.nextInt();
