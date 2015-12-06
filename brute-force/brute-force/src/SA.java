@@ -39,17 +39,17 @@ public class SA {
 	
 	public static double calc_prob(double temp, int curr_sum, int new_sum) {
 		if (new_sum > curr_sum) return 1;
-		double x = (new_sum - curr_sum) * 2;
+		double x = (new_sum - curr_sum) * 1.75;
 		//temp = Math.sqrt(temp);
 		double sig = 1 / (1 + Math.exp(-x));
 		//System.out.println(x);
 		//System.out.println(sig * temp * 2);
-		return sig * Math.sqrt(temp) * 3;
+		return sig * temp;
 	}
 	
 	public static int[] run(int num_ver, int[][] a, int num_iter, int[] ord) {
 		Random rnd = new Random();
-		//System.out.println("before, Max value is: " + calc_sum(ord, a, num_ver));
+		System.out.println("before, Max value is: " + calc_sum(ord, a, num_ver));
 		
 		int curr_sum = calc_sum(ord, a, num_ver);
 		for (int i = num_iter; i >= 0; i--) {
@@ -71,14 +71,14 @@ public class SA {
 			}
 		}
 
-		//System.out.println("After, Max value is: " + curr_sum);
+		System.out.println("After, Max value is: " + curr_sum);
 		return ord;
 	}
 	
 	public static void main(String[] args) throws FileNotFoundException {
 		//Scanner input = new Scanner(System.in);
 		int num_data = 621;
-		int num_iter = 25000000;
+		int num_iter = 100000000;
 		File initF = new File("./ffinal.out");
 		Scanner init = new Scanner(initF);
 		Random rnd = new  Random();
