@@ -78,7 +78,7 @@ public class SA {
 	public static void main(String[] args) throws FileNotFoundException {
 		//Scanner input = new Scanner(System.in);
 		int num_data = 621;
-		int num_iter = 100000000;
+		int num_iter = 1000000000;
 		File initF = new File("./ffinal.out");
 		Scanner init = new Scanner(initF);
 		Random rnd = new  Random();
