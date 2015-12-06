@@ -59,7 +59,7 @@ public class SA {
 		File initF = new File("./satm.out");
 		Scanner init = new Scanner(initF);
 		
-		for (int i = 70; i <= num_data; i++) {
+		for (int i = 1; i <= num_data; i++) {
 			File file = new File("./instances/" + i + ".in");
 			Scanner input = new Scanner(file);
 			int num_ver = input.nextInt();
